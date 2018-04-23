@@ -13,6 +13,24 @@ export default function(state = [], action) {
                 return course
             })
         ]
+        case ADD_COURSE:
+        return [
+            ...state.map((course,index) => {
+                if(course == action.payload) {
+                course.enrolled = true
+                }
+                return course
+            })
+        ]
+        case TOGGLE_DESCRIPTION:
+        return [
+            ...state.map((course,index) => {
+                if(course == action.payload) {
+                course.enrolled = true
+                }
+                return course
+            })
+        ]
         default: return state
          
     }
