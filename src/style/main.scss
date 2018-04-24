@@ -1,18 +1,37 @@
 @import 'components/schedule';
 @import 'components/courseLibrary';
 
+
 .main-container {
     display: flex;
-    justify-content : center;
+    justify-content: center;
     align-content: center;
-    flex-direction: row;
+    
 }
 
 .library {
     flex-grow: 2;
-    width: 70%;
+    width: 62%;
     padding: 6rem;
     z-index: 1;
+}
+
+.schedule {
+    flex-grow: 1;
+    background: linear-gradient(118.95deg, #6F48CE 0%, #32CBE8 100%);
+    width: 38%;
+    height: 100vh;
+    text-align: center;
+    z-index: 1;
+    padding: 12rem 6rem;
+}
+
+.schedule__header {
+    border: none;
+    border-left: 1px solid white;
+    color: white;
+    font-size: 20px;
+    font-family: 'Alegreya' , serif;
 }
 
 .library__header {
@@ -23,14 +42,7 @@
     font-family: Alegreya, serif;
     font-size: 34px;
     font-weight: bold;
-    font-weight: bold;
     line-height: 47px;
-}
-
-.schedule {
-    flex-grow: 1;
-    width: 30%;
-    background: linear-gradient(118.95deg, #6f48ce 0%, #32cbeb 100%);
 }
 
 ul {
@@ -42,43 +54,26 @@ ul {
 
 ul li {
     margin: 10px 0;
-    padding-top: 15px;
-    padding-bottom: 16px;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding: 15px, 25px, 16px;
 }
 
 .course__title {
-    color: #4d4d4d;
+    color: #4D4D4D;
     font-family: Lato;
     font-size: 16px;
 }
 
 .course__description {
-   width: 60%;
-   padding-top: 25px; 
+    width: 60%;
+    padding-top: 25px;
 }
 
-.courese__description-title {
+.course__description-title {
     color: #487bce;
     font-family: Alegreya;
     font-size: 16px;
     font-weight: bold;
     line-height: 22px;
-}
-
-.slot__course {
-    background-color: white;
-    color: black;
-    border: 1px solid rgba(255,255,255,0.6);
-}
-
-.slot__empty {
-    opacity: 0.75;
-    background:transparent;
-    border: 1px solid rgba(255,255,255,0.6);
-    border-style: dashed;
-    color: white;
 }
 
 .show-content {

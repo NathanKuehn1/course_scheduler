@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect, dispatch } from 'react-redux';
 import { fetchCourses, addCourse, removeCourse, toggleDescription } from '../actions'
+import AnimateHeight from 'react-animate-height'
 
 class CourseLibrary extends Component {
 
@@ -16,24 +17,30 @@ class CourseLibrary extends Component {
 
     renderCourse(course) {
         return (
-        <li key={course.title} className="course">
+        <li key={course.title} className={`course ${course.open ? 'course__selected' : ''}`}>
             <div className="course__info">
                 <div className="course__title-container">
                     <div className="course__title">{course.title}</div>
                 </div>
-                <a> onClick={() => this.props.toggleDescription(course)}>arrow</a>
-                <a className={`action ${course.enrolled ? 'hide-content' : 'show-content'}`} onClick={() => this.props.addCourse(content)>
-                <a className={`action ${course.enrolled ? 'show-content' : 'hide-content'}`} onClick={() => this.props.removeCourse(content)>
-        
+                
+                <a className={`course__arrow ${course.open ? null : 'course__arrow-close'}`} onClick={() => this.props.toggleDescription(course)}></a>
+                <a className={`action ${course.enrolled ? 'hide-content' : 'show-content'}`} onClick={() => this.props.addCourse(course)}>add</a>
+                <a className={`action ${course.enrolled ? 'show-content' : 'hide-content'}`} onClick={() => this.props.removeCourse(course)}>remove</a>
             </div>
-            <div className={`course__description ${course.open} ? 'show-content' : 'hide-content'`}>
+             
+        <AnimateHeight
+          duration={ 300 }
+          height={ course.open ? 'auto' : '0' } 
+        >
+            <div className={`course__description`}>
                 <h6 className="course__description-title">Course Description</h6>
                 <p>{course.description}</p>
             </div>
+        </AnimateHeight>
         </li>
         )
     }
-                
+
     render() {
         return ( 
             <ul>
@@ -43,8 +50,9 @@ class CourseLibrary extends Component {
             </ul>
         )
     }
-                
-                
+
+}
+         
 
 
 function mapStateToProps(state) {
@@ -55,19 +63,18 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         fetchCourses:()=> {
-            dispatch(fetchCourse())
+            dispatch(fetchCourses())
         },
-        addCourses:()=> {
+        addCourse:(course) => {
             dispatch(addCourse(course))
         },
-        removeCourses:()=> {
+        removeCourse:(course) => {
             dispatch(removeCourse(course))
         },
-        toggleDescription:()=> {
+        toggleDescription:(course) => {
             dispatch(toggleDescription(course))
         }
     }
 }
-                
 
 export default connect(mapStateToProps, mapDispatchToProps)(CourseLibrary);

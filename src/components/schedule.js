@@ -5,33 +5,33 @@ import { removeCourse } from '../actions'
 class Schedule extends Component {
 
     constructor(props) {
-        super()
+        super(props) 
 
         this.renderCourse = this.renderCourse.bind(this);
     }
 
     renderCourse(course) {
-        
         return (
             <div key={this.props.courses.indexOf(course)} className={`slot ${course.enrolled ? 'slot__course' : 'slot__empty'}`}>
-                <div className="slot_title">{course.enrolled ? course.title : 'Empty Slot'}</div>
-                <a className={`action slot_remove ${course.enrolled ? 'show-content' : 'hide-content'}`} onClick ={() => this.props.removeCourse(course)}>remove course</a>
-                </div>
+                <div className="slot__title">{course.enrolled ? course.title : 'Empty Slot'}</div>
+                <a className={`action slot__remove ${course.enrolled ? 'show-content' : 'hide-content'}`} onClick={() => this.props.removeCourse(course)}>remove course</a>
+            </div>
         )
     }
 
-
-render() {
-    return (
-        <div>
-            <div className="schedule_slots">
-            {
-                this.props.courses.map(this.renderCourse)
-            }
+    render() {
+        return (
+            <div>
+                <div className="schedule__slots">
+                    {
+                        this.props.courses.map(this.renderCourse)
+                    }
+                </div>
             </div>
-        </div>
-    )
-}
+        )
+
+    }
+
 }
 
 function mapStateToProps(state) {
@@ -41,7 +41,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         removeCourse:(course)=> {
-            dispatch(removeCourse())
+            dispatch(removeCourse(course))
         }
     }
 }
