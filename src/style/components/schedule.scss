@@ -1,7 +1,7 @@
 .slot__title {
     font-size: 24px;
     padding: 4px;
-    font-family: Lato;
+    font-family: lato;
     font-size: 16px;
 }
 
@@ -13,6 +13,8 @@
     background-color: white;
     color: black;
     border: 1px solid rgba(255,255,255,0.6);
+    transition: all .3s ease;
+
 }
 
 .slot__empty {
@@ -27,5 +29,29 @@
     margin: 20px auto;
     height: 55px;
     width: 280px;
-    box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 14px 0 rgba(0,0,0, 0.2);
+
+    div {
+        font-family: Lato;
+        font-size: 16px;
+        padding: 4px;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
+}
+
+.action {
+    opacity: 0;
+}
+
+.slot__course:hover {
+    box-shadow: 0 2px 10px 0 rgba(0,0,0, 0.21);
+    transform: scale(1.05);
+    transition: all .3s ease;
+    .action {
+        opacity: 1;
+    }
 }

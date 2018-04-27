@@ -14,7 +14,7 @@ class Schedule extends Component {
         return (
             <div key={this.props.courses.indexOf(course)} className={`slot ${course.enrolled ? 'slot__course' : 'slot__empty'}`}>
                 <div className="slot__title">{course.enrolled ? course.title : 'Empty Slot'}</div>
-                <a className={`action slot__remove ${course.enrolled ? 'show-content' : 'hide-content'}`} onClick={() => this.props.removeCourse(course)}>remove course</a>
+                <a className={`action slot__remove`} onClick={() => this.props.removeCourse(course)}>remove course</a>
             </div>
         )
     }
@@ -24,6 +24,8 @@ class Schedule extends Component {
             <div>
                 <div className="schedule__slots">
                     {
+                        
+
                         this.props.courses.map(this.renderCourse)
                     }
                 </div>
@@ -35,12 +37,18 @@ class Schedule extends Component {
 }
 
 function mapStateToProps(state) {
-    return { courses: state.courses };
+    let enrolledCourses = []
+    state.courses.map((course) => {
+        if(course.enrolled) {
+            enrolledCourses.push(course);
+        }
+    })
+    return { courses: enrolledCourses };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        removeCourse:(course)=> {
+        removeCourse:(course) => {
             dispatch(removeCourse(course))
         }
     }
