@@ -6,15 +6,18 @@
     display: flex;
     justify-content: center;
     align-content: center;
-    
+    flex-direction: row;
 }
 
 .library {
     flex-grow: 2;
     width: 62%;
+    max-width: 62%;
+    height: 100vh;
     padding: 6rem;
     z-index: 1;
-    height: 100vh;
+    position: absolute;
+    left: 0;
   
 }
 
@@ -22,9 +25,12 @@
     flex-grow: 1;
     width: 38%;
     background: linear-gradient(118.95deg, #6F48CE 0%, #32CBE8 100%);
+    width: 38%;
     height: 100vh;
     text-align: center;
     padding: 12rem 6rem;
+    position: fixed;
+    right: 0;
 }
 
 .schedule__header {
