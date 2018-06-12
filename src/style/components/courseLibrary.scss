@@ -88,6 +88,7 @@
     position: relative;
     
 
+
     &:after,
     &:before {
         content: '';
@@ -125,11 +126,3 @@
     }
 }
 
-.slot__remove {
-    @include add-button;
-    transition: translateY(-50%);
-    display: inline-block;
-    position: absolute;
-    right: 13px;
-    top: 50%;
-}
